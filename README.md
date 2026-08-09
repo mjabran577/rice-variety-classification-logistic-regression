@@ -37,6 +37,23 @@ For reproducibility, the train-test split uses `random_state=732084`, matching t
 
 These results show that the measured grain characteristics provide strong separation between the two rice varieties.
 
+## Visual results
+
+### Class distribution
+![Class distribution](figures/class_distribution.png)
+
+### Area by rice variety
+![Area boxplot](figures/area_boxplot.png)
+
+### Correlation heatmap
+![Correlation heatmap](figures/correlation_heatmap.png)
+
+### Confusion matrix
+![Confusion matrix](figures/confusion_matrix.png)
+
+### ROC curve
+![ROC curve](figures/roc_curve.png)
+
 ## Why this matters
 
 A similar classification workflow could support:
@@ -53,14 +70,30 @@ A similar classification workflow could support:
 .
 ├── README.md
 ├── rice_classification.py
+├── generate_report.py
 ├── requirements.txt
 ├── data/
 │   └── README.md
 ├── figures/
-│   └── README.md
+│   ├── class_distribution.png
+│   ├── area_boxplot.png
+│   ├── correlation_heatmap.png
+│   ├── confusion_matrix.png
+│   └── roc_curve.png
+├── notebooks/
+│   └── Rice.ipynb
+├── report/
+│   └── Rice_Executive_Summary_BT732084.pdf
+├── .github/workflows/
+│   └── build-assets.yml
 ├── .gitignore
 └── LICENSE
 ```
+
+## Notebook and report
+
+- [`notebooks/Rice.ipynb`](notebooks/Rice.ipynb) — cleaned, step-by-step Jupyter notebook based on the original university analysis.
+- [`report/Rice_Executive_Summary_BT732084.pdf`](report/Rice_Executive_Summary_BT732084.pdf) — concise portfolio report with methodology, results, figures, discussion, and applications.
 
 ## Run the project
 
@@ -84,6 +117,15 @@ python rice_classification.py
 
 The script trains the model, prints the evaluation metrics, and saves the main visualizations in the `figures/` directory.
 
+To rebuild the PDF report after generating the figures, install ReportLab and run:
+
+```bash
+pip install reportlab
+python generate_report.py
+```
+
+The included GitHub Actions workflow can also rebuild the figures and PDF report automatically from the UCI source dataset.
+
 ## Tools
 
 - Python
@@ -92,6 +134,8 @@ The script trains the model, prints the evaluation metrics, and saves the main v
 - matplotlib
 - seaborn
 - SciPy
+- Jupyter Notebook
+- GitHub Actions
 
 ## Author
 
